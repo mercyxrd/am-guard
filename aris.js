@@ -25,7 +25,7 @@ function percentage(partialValue, totalValue) {
 client.on('message', async(message) => {
 const s = await channels.findOne({guildID: message.guild.id})
 const kanal = message.guild.channels.cache.get(s.channel)
-let embed = new MessageEmbed().setFooter(`Hanzo Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk).setAuthor('Engellenen Mesajlar', message.author.avatarURL({ dynamic: true }));
+let embed = new MessageEmbed().setFooter(`Cartel Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk).setAuthor('Engellenen Mesajlar', message.author.avatarURL({ dynamic: true }));
 const data = await database.findOne({guildID: message.guild.id});
 if (!data) return
 if(message.author.bot) return;
@@ -103,7 +103,7 @@ const data = await database.findOne({guildID: channel.guild.id});
 if (!data) return
 const s = await channels.findOne({guildID: channel.guild.id})
 const kanal = channel.guild.channels.cache.get(s.channel)
-let embed = new MessageEmbed().setFooter(`Hanzo Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
+let embed = new MessageEmbed().setFooter(`Cartel Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
 const Database = await db.findOne({ ServerID: channel.guild.id });
 let entry = await channel.guild.fetchAuditLogs({type: 'CHANNEL_CREATE'}).then(audit => audit.entries.first());
 const m = channel.guild.members.cache.get(entry.executor.id)
@@ -169,7 +169,7 @@ const data = await database.findOne({guildID: channel.guild.id});
 if (!data) return
 const s = await channels.findOne({guildID: channel.guild.id})
 const kanal = channel.guild.channels.cache.get(s.channel)
-let embed = new MessageEmbed().setFooter(`Hanzo Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
+let embed = new MessageEmbed().setFooter(`Cartel Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
 const Database = await db.findOne({ ServerID: channel.guild.id });
 let entry = await channel.guild.fetchAuditLogs({type: 'CHANNEL_DELETE'}).then(audit => audit.entries.first());
 const m = channel.guild.members.cache.get(entry.executor.id)
@@ -212,14 +212,14 @@ position: role.position,
 permissions: role.permissions,
 mentionable: role.mentionable
 },
-reason: "Rol Silindiği İçin Tekrar Oluşturuldu! - Hanzo Guard System!"
+reason: "Rol Silindiği İçin Tekrar Oluşturuldu! - Cartel Guard System!"
 });
 if (kanal) { kanal.send(`@everyone`, embed.setDescription(`${entry.executor} **(${entry.executor.id})** tarafından **${role.name}** rolü silindi! Silen kişi jaile atıldı ve rol tekrar açıldı.`)).catch(); } else { role.guild.owner.send(embed.setDescription(`${entry.executor} **(${entry.executor.id})** tarafından **${role.name}** rolü silindi! Silen kişi jaile atıldı ve rol tekrar açıldı.`)).catch(err => {}); };
 })
 //ROL OLUŞTURMA
 client.on("roleCreate", async role => {
 const config = require("./ayarlar.json")
-let embed = new MessageEmbed().setFooter(`Hanzo Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
+let embed = new MessageEmbed().setFooter(`Cartel Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
 const data = await database.findOne({guildID: role.guild.id});
 if (!data) return
 const s = await channels.findOne({guildID: role.guild.id})
@@ -231,14 +231,14 @@ if (data.RolKoruma === false || !entry || !entry.executor || Date.now()-entry.cr
 const rol = data.JailRole
 m.roles.set(rol)
 ytKapat(role.guild.id)
-role.delete({ reason: "İzinsiz Açılan Rol Silindi! - Hanzo Guard System!" });
+role.delete({ reason: "İzinsiz Açılan Rol Silindi! - Cartel Guard System!" });
 if (kanal) { kanal.send(`@everyone`, embed.setDescription(`${entry.executor} **(${entry.executor.id})** tarafından **${role.name}** rolü açıldı! Açan kişi jaile atıldı ve rol silindi.`)).catch(); } else { role.guild.owner.send(embed.setDescription(`${entry.executor} **(${entry.executor.id})** tarafından **${role.name}** rolü açıldı! Açan kişi jaile atıldı ve rol silindi.`)).catch(err => {}); };
 })
 //ROL DÜZENLEME
 client.on("roleUpdate", async (oldRole, newRole) => {
 const yetkiPermleri = ["ADMINISTRATOR", "MANAGE_ROLES", "MANAGE_CHANNELS", "MANAGE_GUILD", "BAN_MEMBERS", "KICK_MEMBERS", "MANAGE_NICKNAMES", "MANAGE_EMOJIS", "MANAGE_WEBHOOKS"];
 const config = require("./ayarlar.json")
-let embed = new MessageEmbed().setFooter(`Hanzo Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
+let embed = new MessageEmbed().setFooter(`Cartel Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
 const data = await database.findOne({guildID: newRole.guild.id});
 if (!data) return
 const s = await channels.findOne({guildID: newRole.guild.id})
@@ -267,7 +267,7 @@ if (kanal) { kanal.send(`@everyone`, embed.setDescription(`${entry.executor} **(
 client.on("guildMemberUpdate", async (oldMember, newMember) => {
 const yetkiPermleri = ["ADMINISTRATOR", "MANAGE_ROLES", "MANAGE_CHANNELS", "MANAGE_GUILD", "BAN_MEMBERS", "KICK_MEMBERS", "MANAGE_NICKNAMES", "MANAGE_EMOJIS", "MANAGE_WEBHOOKS"];
 const config = require("./ayarlar.json")
-let embed = new MessageEmbed().setFooter(`Hanzo Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
+let embed = new MessageEmbed().setFooter(`Cartel Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
 const data = await database.findOne({guildID: newMember.guild.id});
 if (!data) return
 const s = await channels.findOne({guildID: newMember.guild.id})
@@ -292,7 +292,7 @@ if (kanal) { kanal.send(`@everyone`, embed.setDescription(`${newMember} (${newMe
 client.on("guildUpdate", async (oldGuild, newGuild) => {
 let entry = await newGuild.fetchAuditLogs({type: 'GUILD_UPDATE'}).then(audit => audit.entries.first());
 const config = require("./ayarlar.json")
-let embed = new MessageEmbed().setFooter(`Hanzo Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
+let embed = new MessageEmbed().setFooter(`Cartel Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
 const data = await database.findOne({guildID: newGuild.id});
 if (!data) return
 const s = await channels.findOne({guildID: newGuild.id})
@@ -313,7 +313,7 @@ if (kanal) { kanal.send(`@everyone`, embed.setDescription(`${entry.executor} **(
 client.on("guildBanAdd", async (guild, user) => {
 let entry = await guild.fetchAuditLogs({type: 'MEMBER_BAN_ADD'}).then(audit => audit.entries.first());
 const config = require("./ayarlar.json")
-let embed = new MessageEmbed().setFooter(`Hanzo Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
+let embed = new MessageEmbed().setFooter(`Cartel Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
 const data = await database.findOne({guildID: guild.id});
 if (!data) return
 const s = await channels.findOne({guildID: guild.id})
@@ -324,14 +324,14 @@ if (data.banKoruma === false || !entry || !entry.executor || Date.now()-entry.cr
 const rol = data.JailRole
 m.roles.set(rol)
 ytKapat(guild.id)
-guild.members.unban(user.id, "Sağ Tık İle Banlandığı İçin Geri Açıldı! - Hanzo Guard System!").catch(console.error);
+guild.members.unban(user.id, "Sağ Tık İle Banlandığı İçin Geri Açıldı! - Cartel Guard System!").catch(console.error);
 if (kanal) { kanal.send(`@everyone`, embed.setDescription(`${user} **(${user.id})** üyesi, ${entry.executor} **(${entry.executor.id})** tarafından sunucudan sağ tık ile banlandı! Banlayan kişi jaile atıldı.`)).catch(err => {}); };
 });
 
 client.on("guildMemberRemove", async member => {
 let entry = await member.guild.fetchAuditLogs({type: 'MEMBER_KICK'}).then(audit => audit.entries.first());
 const config = require("./ayarlar.json")
-let embed = new MessageEmbed().setFooter(`Hanzo Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
+let embed = new MessageEmbed().setFooter(`Cartel Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
 const data = await database.findOne({guildID: member.guild.id});
 if (!data) return
 const s = await channels.findOne({guildID: member.guild.id})
@@ -350,7 +350,7 @@ if (kanal) { kanal.send(`@everyone`, embed.setDescription(`${member} **(${member
 client.on("guildMemberAdd", async member => {
 let entry = await member.guild.fetchAuditLogs({type: 'BOT_ADD'}).then(audit => audit.entries.first());
 const config = require("./ayarlar.json")
-let embed = new MessageEmbed().setFooter(`Hanzo Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
+let embed = new MessageEmbed().setFooter(`Cartel Chat Guard | Developed By Aris.`).setColor(ayarlar.embedrenk);
 const data = await database.findOne({guildID: member.guild.id});
 if (!data) return
 const s = await channels.findOne({guildID: member.guild.id})
