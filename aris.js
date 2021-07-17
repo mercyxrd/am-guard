@@ -13,6 +13,7 @@ const escapeStringRegexp = require('escape-string-regexp')
 const emojiRegex = require("emoji-regex")
 const channels = require("./database/modlog")
 const db = require("./database/whitelist");
+require("discord-buttons")
 const { resolve } = require("path");
 require('discord-buttons')(client)
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
