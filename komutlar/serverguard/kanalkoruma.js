@@ -4,7 +4,7 @@ const client = new Discord.Client();
 const ayarlar = require('../../ayarlar.json');
 const database = require("../../database/korumalar");
 exports.run = async (receivedMessage, message, args) => {  
-let embed = new MessageEmbed().setColor(ayarlar.embedrenk).setAuthor('Hanzo Guard', message.author.avatarURL({ dynamic: true }));
+let embed = new MessageEmbed().setColor(ayarlar.embedrenk).setAuthor('Cartel Guard', message.author.avatarURL({ dynamic: true }));
 const data = await database.findOne({guildID: message.guild.id});
 if(message.author.id !== message.guild.owner.user.id) return message.channel.send(embed.setDescription(`Bu komutu kullanmak için sunucu sahibi olmalısın.`)).then(x=>x.delete({timeout:5000}))
 if(data.JailRole == false) return message.channel.send(embed.setDescription(`Jail rolü ayarlanmadığı için işleme devam edemiyorum.\n\`.jailrol ayarla [@rol]\``)).then(x=>x.delete({timeout:20000}));
