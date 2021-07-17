@@ -6,7 +6,7 @@ var prefix = ayarlar.prefix;
 
 
 module.exports = client => {
-  client.user.setPresence({ activity: { name: ``+ client.guilds.size + ` adet sunucuya ve ` + client.guilds.reduce((a, b) => a + b.memberCount, 0).toLocaleString() + ` kullanıcıya hizmet veriliyor!` }, status: "dnd" });
+  client.user.setPresence({ activity: { name: `x` }, status: "dnd" });
   console.log(`${client.user.username} ismi ile giriş yapıldı!`);
   console.log(`${client.user.username}: Şu an ` + client.channels.cache.size + ` adet kanala, ` + client.guilds.cache.size + ` adet sunucuya ve ` + client.guilds.cache.reduce((acc, currentValue) => acc + currentValue.memberCount, 0) + ` kullanıcıya hizmet veriliyor!`);
 }
