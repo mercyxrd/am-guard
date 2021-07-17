@@ -4,7 +4,7 @@ const client = new Discord.Client();
 const ayarlar = require('../../ayarlar.json');
 const db = require("../../database/whitelist.js")
 exports.run = async (receivedMessage, message, args) => {  
-let embed = new MessageEmbed().setColor(ayarlar.embedrenk).setAuthor('Hanzo Guard', message.author.avatarURL({ dynamic: true }));
+let embed = new MessageEmbed().setColor(ayarlar.embedrenk).setAuthor('Cartel Guard', message.author.avatarURL({ dynamic: true }));
 if(message.member !== message.guild.owner) return message.channel.send(embed.setDescription(`Bu komutu kullanabilmek için sunucu sahibi olmalısın.`)).then(x=>x.delete({timeout:5000}))
 var member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 var role = message.mentions.roles.first() || message.guild.roles.cache.get(args[0]);
