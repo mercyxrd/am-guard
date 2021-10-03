@@ -1,1 +1,1 @@
-worker node aris.js
+worker node allah-airlines.js
